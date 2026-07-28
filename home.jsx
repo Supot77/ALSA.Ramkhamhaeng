@@ -178,7 +178,7 @@ export default function ALSAHomepage() {
       {/* 1. TOP HERO HEADER WITH VISUAL BANNER */}
       <header className="relative w-full h-[340px] sm:h-[420px] lg:h-[500px] overflow-hidden bg-black">
         <img 
-          src="header-bg2.jpg" 
+          src="/header-bg2.jpg" 
         
           alt="Faculty of Law Ramkhamhaeng University Banner"
           className="w-full h-full object-cover object-center opacity-60 scale-105 transition-transform duration-1000 hover:scale-100"
@@ -188,7 +188,7 @@ export default function ALSAHomepage() {
         <div className="absolute inset-0 flex flex-col justify-end max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16 text-white">
           <div className="flex items-center gap-4 mb-3">
             <img 
-              src="logo2.png" 
+              src="/logo2.png" 
               alt="ALSA RU Logo" 
               className="w-14 h-14 sm:w-20 sm:h-20 object-contain drop-shadow-md" 
             />
