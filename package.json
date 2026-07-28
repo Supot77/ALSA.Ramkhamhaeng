@@ -1,0 +1,28 @@
+{
+  "name": "alsa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "lucide-react": "^0.534.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.4",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.37",
+    "tailwindcss": "^3.4.4",
+    "vite": "^8.1.5"
+  }
+}
