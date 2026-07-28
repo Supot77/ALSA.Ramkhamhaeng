@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Scale, Menu, X, ChevronRight, Users, Calendar, Globe, Mail, 
   MapPin, CheckCircle2, ArrowUpRight, Search, Heart, ShieldCheck, 
-  UserPlus, ArrowRight, Navigation as NavigationIcon, Compass, Train, Bus, Map, Layers, Info, Check, Eye
+  UserPlus, ArrowRight, Compass, Train, Bus, Map, Layers, Info, Check, Eye, Navigation
 } from 'lucide-react';
 
 const FEATURED_EVENTS = [
@@ -173,71 +173,58 @@ export default function ALSAHomepage() {
   const currentDistrictData = BANGKOK_DISTRICTS_50.find(d => d.id === selectedDistrict) || BANGKOK_DISTRICTS_50[0];
 
   return (
-    <div className="min-h-screen bg-[#F7F3EB] text-[#1d1d1f] font-sans antialiased selection:bg-[#6A1428] selection:text-white">
+    <div className="min-h-screen bg-[#510706] text-white font-sans antialiased selection:bg-white selection:text-[#510706]">
       
       {/* 1. TOP HERO HEADER WITH VISUAL BANNER */}
-      {}
       <header className="relative w-full h-[340px] sm:h-[420px] lg:h-[500px] overflow-hidden bg-black">
         <img 
-          src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2000&auto=format&fit=crop" 
+          src="header-bg.jpg" 
+        
           alt="Faculty of Law Ramkhamhaeng University Banner"
           className="w-full h-full object-cover object-center opacity-60 scale-105 transition-transform duration-1000 hover:scale-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-[#1c1917]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#510706] via-[#510706]/50 to-transparent" />
         
         <div className="absolute inset-0 flex flex-col justify-end max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16 text-white">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 w-fit mb-4 text-xs font-medium text-amber-200">
-            <Scale className="w-3.5 h-3.5 text-amber-300" />
-            <span>ALSA Ramkhamhaeng University Local Chapter</span>
+          <div className="flex items-center gap-4 mb-3">
+            <img 
+              src="logo.png" 
+              alt="ALSA RU Logo" 
+              className="w-14 h-14 sm:w-20 sm:h-20 object-contain drop-shadow-md" 
+            />
           </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-3 drop-shadow-sm">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-2 drop-shadow-sm">
             Asian Law Students' Association
           </h1>
-          <p className="text-stone-300 text-sm sm:text-lg max-w-2xl font-normal leading-relaxed">
-            คณะนิติศาสตร์ มหาวิทยาลัยรามคำแหง — เชื่อมโยงเครือข่ายนักศึกษานิติศาสตร์ระดับสากลสู่ความเป็นเลิศทางวิชาการ
+          <p className="text-white/90 text-base sm:text-xl font-medium tracking-wide">
+            Local Chapter Ramkhamhaeng University
           </p>
         </div>
       </header>
 
       {/* 2. STICKY NAVIGATION BAR */}
-      {}
-      <nav className="sticky top-0 z-50 bg-[#F7F3EB]/90 backdrop-blur-xl border-b border-stone-300/80 transition-all duration-300 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-          <a href="#hero" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-full bg-[#6A1428] text-white flex items-center justify-center font-bold text-xs shadow-sm group-hover:bg-[#851b34] transition-colors">
-              RU
-            </div>
-            <span className="font-semibold text-base sm:text-lg text-[#1d1d1f] tracking-tight">
-              ALSA <span className="text-[#6A1428]">Ramkhamhaeng</span>
-            </span>
-          </a>
-
-          {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-6 text-xs font-medium text-stone-700">
+      <nav className="sticky top-0 z-50 bg-[#510706]/90 backdrop-blur-xl border-b border-red-950/80 transition-all duration-300 shadow-md">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between lg:justify-center relative">
+          
+          {/* Desktop Links (Centered Navigation Only) */}
+          <div className="hidden lg:flex items-center gap-8 text-xs font-medium text-white/90">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleScrollTo(item.href)}
-                className="hover:text-[#6A1428] transition-colors py-1 cursor-pointer"
+                className="hover:text-white transition-colors py-1 cursor-pointer"
               >
                 {item.name}
               </button>
             ))}
           </div>
 
-          {/* Action CTA & Mobile Toggle */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setRegModalOpen(true)}
-              className="px-4 py-1.5 rounded-full bg-[#6A1428] hover:bg-[#851b34] text-white text-xs font-medium transition-all transform active:scale-95 shadow-sm inline-flex items-center gap-1.5"
-            >
-              <UserPlus className="w-3.5 h-3.5" />
-              <span>สมัครสมาชิก</span>
-            </button>
-
+          {/* Mobile Toggle Button */}
+          <div className="flex lg:hidden items-center justify-between w-full">
+            <span className="text-xs font-semibold text-white">Navigation</span>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-1.5 text-stone-700 hover:text-black rounded-lg"
+              className="p-1.5 text-white hover:text-white/80 rounded-lg"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -247,12 +234,12 @@ export default function ALSAHomepage() {
 
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-[#F7F3EB] border-b border-stone-300 px-4 py-4 space-y-2 animate-in slide-in-from-top-2 duration-200">
+          <div className="lg:hidden bg-[#510706] border-b border-red-950 px-4 py-4 space-y-2 animate-in slide-in-from-top-2 duration-200">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleScrollTo(item.href)}
-                className="block w-full text-left px-3 py-2 text-sm font-medium text-stone-700 hover:bg-stone-200/60 rounded-lg transition-colors"
+                className="block w-full text-left px-3 py-2 text-sm font-medium text-white hover:bg-red-950/60 rounded-lg transition-colors"
               >
                 {item.name}
               </button>
@@ -262,28 +249,27 @@ export default function ALSAHomepage() {
       </nav>
 
       {/* 3. HERO OVERVIEW SECTION */}
-      {}
       <section id="hero" className="py-20 sm:py-28 px-4 sm:px-6 text-center max-w-4xl mx-auto">
-        <span className="text-xs font-semibold uppercase tracking-widest text-[#6A1428] mb-3 block">
+        <span className="text-xs font-semibold uppercase tracking-widest text-white mb-3 block">
           ALSA RAMKHAMHAENG UNIVERSITY
         </span>
-        <h2 className="text-4xl sm:text-6xl font-semibold tracking-[-0.025em] leading-[1.08] text-[#1d1d1f] mb-6">
+        <h2 className="text-4xl sm:text-6xl font-semibold tracking-[-0.025em] leading-[1.08] text-white mb-6">
           นิติศาสตร์รามคำแหง.<br className="hidden sm:inline" />ในมุมมองที่กว้างกว่าที่เคย.
         </h2>
-        <p className="text-stone-600 text-lg sm:text-2xl font-normal leading-relaxed mb-8 max-w-2xl mx-auto">
+        <p className="text-white/80 text-lg sm:text-2xl font-normal leading-relaxed mb-8 max-w-2xl mx-auto">
           ศูนย์กลางการเชื่อมต่อวิสัยทัศน์กฎหมายระดับเอเชีย พัฒนาทักษะการว่าความ การแข่งขัน Moot Court และเครือข่ายวิชาการระดับสากล
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <button 
             onClick={() => handleScrollTo('#about-teaser')}
-            className="px-6 py-3 rounded-full bg-[#6A1428] hover:bg-[#851b34] text-white text-sm font-medium transition-all shadow-md transform active:scale-95 inline-flex items-center gap-2"
+            className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/40 text-sm font-semibold transition-all shadow-md transform active:scale-95 inline-flex items-center gap-2"
           >
             <span>ทำความรู้จัก ALSA RU</span>
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-4 h-4 text-white" />
           </button>
           <button 
             onClick={() => handleScrollTo('#event-teaser')}
-            className="px-6 py-3 rounded-full bg-white hover:bg-stone-100 text-[#6A1428] border border-stone-300 text-sm font-medium transition-all shadow-sm transform active:scale-95"
+            className="px-6 py-3 rounded-full bg-transparent hover:bg-white/10 text-white border border-white/40 text-sm font-medium transition-all shadow-sm transform active:scale-95"
           >
             ดูกิจกรรมวิชาการ
           </button>
@@ -291,53 +277,52 @@ export default function ALSAHomepage() {
       </section>
 
       {/* 4. ABOUT TEASER SECTION */}
-      {}
-      <section id="about-teaser" className="py-20 bg-white border-y border-stone-200 px-4 md:px-6">
+      <section id="about-teaser" className="py-20 bg-[#400504] border-y border-red-950/60 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs uppercase tracking-widest text-[#6A1428] font-semibold block">
+              <span className="text-xs uppercase tracking-widest text-white font-semibold block">
                 ABOUT OUR CHAPTER
               </span>
-              <h2 className="text-3xl sm:text-4xl font-semibold text-[#1d1d1f] tracking-tight leading-snug">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-snug">
                 ส่งเสริมศักยภาพนักศึกษานิติศาสตร์ รามคำแหง สู่เวทีระดับสากล
               </h2>
-              <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+              <p className="text-white/80 text-sm sm:text-base leading-relaxed">
                 ALSA Ramkhamhaeng University เป็นสาขาในระดับสถาบันอุดมศึกษาภายใต้ ALSA Thailand และ ALSA International มุ่งเน้นการพัฒนานักศึกษานิติศาสตร์ มหาวิทยาลัยรามคำแหง ให้มีความเชี่ยวชาญทั้งด้านทฤษฎี กฎหมายเปรียบเทียบ ภาษาอังกฤษเพื่อกฎหมาย และทักษะการปฏิบัติงานจริง
               </p>
 
               <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="bg-[#F7F3EB] p-4 rounded-2xl border border-stone-200">
-                  <div className="text-2xl font-bold text-[#6A1428]">17+</div>
-                  <div className="text-xs text-stone-600 font-medium mt-1">ประเทศสมาชิกในภูมิภาคเอเชีย</div>
+                <div className="bg-[#350403] p-4 rounded-2xl border border-red-950/50">
+                  <div className="text-2xl font-bold text-white">17+</div>
+                  <div className="text-xs text-white/80 font-medium mt-1">ประเทศสมาชิกในภูมิภาคเอเชีย</div>
                 </div>
-                <div className="bg-[#F7F3EB] p-4 rounded-2xl border border-stone-200">
-                  <div className="text-2xl font-bold text-[#6A1428]">100%</div>
-                  <div className="text-xs text-stone-600 font-medium mt-1">การสนับสนุนวิชาการ & Moot Court</div>
+                <div className="bg-[#350403] p-4 rounded-2xl border border-red-950/50">
+                  <div className="text-2xl font-bold text-white">100%</div>
+                  <div className="text-xs text-white/80 font-medium mt-1">การสนับสนุนวิชาการ & Moot Court</div>
                 </div>
               </div>
 
               <div className="pt-2">
                 <button 
                   onClick={() => handleScrollTo('#membership-teaser')}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#6A1428] hover:underline"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-white underline hover:text-white/80"
                 >
                   <span>อ่านต่อเรื่องราวและวิสัยทัศน์ของเรา</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-white" />
                 </button>
               </div>
             </div>
 
             <div className="lg:col-span-6">
-              <div className="relative rounded-3xl overflow-hidden border border-stone-200 shadow-xl bg-stone-100">
+              <div className="relative rounded-3xl overflow-hidden border border-red-950/60 shadow-xl bg-stone-900">
                 <img 
                   src="https://images.unsplash.com/photo-1505664177922-24151b1450a1?q=80&w=1200&auto=format&fit=crop" 
                   alt="Moot Court Mooting Session"
-                  className="w-full h-[380px] sm:h-[440px] object-cover object-center"
+                  className="w-full h-[380px] sm:h-[440px] object-cover object-center opacity-90"
                 />
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
-                  <span className="text-xs text-amber-300 font-semibold tracking-wider block mb-1">FEATURED ACTIVITY</span>
-                  <h3 className="text-lg font-semibold">การฝึกซ้อมว่าความศาลจำลอง (Moot Court Intensive)</h3>
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 text-white">
+                  <span className="text-xs text-white font-semibold tracking-wider block mb-1">FEATURED ACTIVITY</span>
+                  <h3 className="text-lg font-semibold text-white">การฝึกซ้อมว่าความศาลจำลอง (Moot Court Intensive)</h3>
                 </div>
               </div>
             </div>
@@ -346,14 +331,13 @@ export default function ALSAHomepage() {
       </section>
 
       {/* 5. EVENT TEASER SECTION */}
-      {}
       <section id="event-teaser" className="py-20 px-4 md:px-6 max-w-6xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
-            <span className="text-xs uppercase tracking-widest text-[#6A1428] font-semibold mb-2 block">
+            <span className="text-xs uppercase tracking-widest text-white font-semibold mb-2 block">
               EVENTS & ACADEMICS
             </span>
-            <h2 className="text-3xl sm:text-4xl font-semibold text-[#1d1d1f]">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-white">
               กิจกรรมและโครงการวิชาการ
             </h2>
           </div>
@@ -365,8 +349,8 @@ export default function ALSAHomepage() {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
                   activeCategory === cat 
-                    ? 'bg-[#6A1428] text-white shadow-sm' 
-                    : 'bg-white text-stone-700 hover:bg-stone-200 border border-stone-300'
+                    ? 'bg-white/20 text-white border border-white/50 font-semibold' 
+                    : 'bg-[#350403] text-white/80 hover:bg-red-950/60 border border-red-950/60'
                 }`}
               >
                 {cat === 'All' ? 'ทั้งหมด' : cat}
@@ -377,36 +361,36 @@ export default function ALSAHomepage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {filteredEvents.map((evt) => (
-            <div key={evt.id} className="bg-white rounded-3xl overflow-hidden border border-stone-300/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+            <div key={evt.id} className="bg-[#350403] rounded-3xl overflow-hidden border border-red-950/60 shadow-md transition-all flex flex-col justify-between group">
               <div>
-                <div className="relative h-48 overflow-hidden bg-stone-100">
+                <div className="relative h-48 overflow-hidden bg-black/40">
                   <img 
                     src={evt.image} 
                     alt={evt.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
                   />
-                  <span className="absolute top-3 right-3 bg-[#6A1428] text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  <span className="absolute top-3 right-3 bg-[#510706] text-white border border-white/40 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
                     {evt.tag}
                   </span>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center gap-2 text-stone-500 text-xs mb-2">
-                    <Calendar className="w-3.5 h-3.5 text-[#6A1428]" />
+                  <div className="flex items-center gap-2 text-white/80 text-xs mb-2">
+                    <Calendar className="w-3.5 h-3.5 text-white" />
                     <span>{evt.date}</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2 leading-snug group-hover:text-[#6A1428] transition-colors">
+                  <h3 className="text-lg font-semibold text-white mb-2 leading-snug group-hover:text-white/90 transition-colors">
                     {evt.title}
                   </h3>
-                  <p className="text-stone-600 text-xs leading-relaxed line-clamp-3 mb-4">
+                  <p className="text-white/70 text-xs leading-relaxed line-clamp-3 mb-4">
                     {evt.desc}
                   </p>
                 </div>
               </div>
 
-              <div className="px-6 pb-6 pt-0 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+              <div className="px-6 pb-6 pt-0 border-t border-red-950/40 flex items-center justify-between text-xs text-white/70">
                 <span className="truncate max-w-[180px]">{evt.location}</span>
-                <span className="text-[#6A1428] font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                  รายละเอียด <ChevronRight className="w-3 h-3" />
+                <span className="text-white font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                  รายละเอียด <ChevronRight className="w-3 h-3 text-white" />
                 </span>
               </div>
             </div>
@@ -414,34 +398,33 @@ export default function ALSAHomepage() {
         </div>
       </section>
 
-      {/* 6. BANGKOK 50 DISTRICTS MAP SECTION (FEATURED SPOTLIGHT) */}
-      {}
-      <section id="map-spotlight" className="py-20 bg-white border-y border-stone-300/80 px-4 md:px-6">
+      {/* 6. BANGKOK 50 DISTRICTS MAP SECTION */}
+      <section id="map-spotlight" className="py-20 bg-[#400504] border-y border-red-950/60 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6A1428]/10 text-[#6A1428] text-xs font-semibold mb-3 border border-[#6A1428]/20">
-              <Compass className="w-3.5 h-3.5 text-[#6A1428]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#510706] text-white text-xs font-semibold mb-3 border border-red-950/80">
+              <Compass className="w-3.5 h-3.5 text-white" />
               <span>BANGKOK 50 DISTRICTS MAP</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-semibold text-[#1d1d1f] tracking-tight mb-3">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight mb-3">
               แผนผังกรุงเทพมหานคร 50 เขต & ที่ตั้ง ALSA RU
             </h2>
-            <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-              แสดงเขตการปกครองทั้ง 50 เขตของกรุงเทพมหานครเป็นสีโทนโมโนโครม โดยเน้น <strong className="text-[#6A1428]">เขตบางกะปิ (สีแดงเบอร์กันดี)</strong> ซึ่งเป็นที่ตั้งศูนย์กลางหลัก ณ คณะนิติศาสตร์ มหาวิทยาลัยรามคำแหง (หัวหมาก)
+            <p className="text-white/80 text-sm sm:text-base leading-relaxed">
+              แสดงเขตการปกครองทั้ง 50 เขตของกรุงเทพมหานครเป็นสีโทนโมโนโครม โดยเน้น <strong className="text-white underline">เขตบางกะปิ (สีสว่างเด่นชัด)</strong> ซึ่งเป็นที่ตั้งศูนย์กลางหลัก ณ คณะนิติศาสตร์ มหาวิทยาลัยรามคำแหง (หัวหมาก)
             </p>
           </div>
 
           {/* View Switcher Controls */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold uppercase text-stone-500 tracking-wider">โหมดการแสดงผล:</span>
+              <span className="text-xs font-semibold uppercase text-white/70 tracking-wider">โหมดการแสดงผล:</span>
               <button
                 onClick={() => setMapViewMode('interactive')}
                 className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                   mapViewMode === 'interactive' 
-                    ? 'bg-[#6A1428] text-white shadow-sm' 
-                    : 'bg-[#F7F3EB] text-stone-700 hover:bg-stone-200 border border-stone-300'
+                    ? 'bg-white/20 text-white font-semibold border border-white/50 shadow-sm' 
+                    : 'bg-[#350403] text-white/80 hover:bg-red-950/60 border border-red-950/60'
                 }`}
               >
                 แผนผัง 50 เขต (Bangkok Vector Map)
@@ -450,17 +433,17 @@ export default function ALSAHomepage() {
                 onClick={() => setMapViewMode('googlemaps')}
                 className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                   mapViewMode === 'googlemaps' 
-                    ? 'bg-[#6A1428] text-white shadow-sm' 
-                    : 'bg-[#F7F3EB] text-stone-700 hover:bg-stone-200 border border-stone-300'
+                    ? 'bg-white/20 text-white font-semibold border border-white/50 shadow-sm' 
+                    : 'bg-[#350403] text-white/80 hover:bg-red-950/60 border border-red-950/60'
                 }`}
               >
                 Google Maps Satellite (ม.ร. หัวหมาก)
               </button>
             </div>
 
-            <div className="flex items-center gap-2 text-xs font-medium bg-rose-50 px-3 py-1 rounded-full border border-rose-200 text-[#6A1428]">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#6A1428] animate-ping"></span>
-              <span>สีแดงเบอร์กันดี: เขตบางกะปิ (ม.รามคำแหง HQ)</span>
+            <div className="flex items-center gap-2 text-xs font-medium bg-[#350403] px-3 py-1 rounded-full border border-red-950/80 text-white">
+              <span className="w-2.5 h-2.5 rounded-full bg-white animate-ping"></span>
+              <span>ไฮไลท์สว่าง: เขตบางกะปิ (ม.รามคำแหง HQ)</span>
             </div>
           </div>
 
@@ -497,11 +480,11 @@ export default function ALSAHomepage() {
                         <g key={district.id} className="cursor-pointer group" onClick={() => setSelectedDistrict(district.id)}>
                           <path
                             d={district.path}
-                            fill={isRU ? '#6A1428' : isSelected ? '#52525b' : '#27272a'}
-                            stroke={isRU ? '#f59e0b' : isSelected ? '#a1a1aa' : '#3f3f46'}
+                            fill={isRU ? '#ffffff' : isSelected ? '#52525b' : '#27272a'}
+                            stroke={isRU ? '#ffffff' : isSelected ? '#a1a1aa' : '#3f3f46'}
                             strokeWidth={isRU ? '2.5' : '1'}
                             filter={isRU ? 'url(#glow)' : 'none'}
-                            className="transition-all duration-300 hover:opacity-90 hover:stroke-amber-300"
+                            className="transition-all duration-300 hover:opacity-90 hover:stroke-white"
                           />
 
                           {/* District Node Dot */}
@@ -509,13 +492,13 @@ export default function ALSAHomepage() {
                             cx={district.cx}
                             cy={district.cy}
                             r={isRU ? '5' : '2.5'}
-                            fill={isRU ? '#f59e0b' : '#71717a'}
+                            fill={isRU ? '#510706' : '#71717a'}
                           />
 
                           {/* Highlight Marker for Bang Kapi */}
                           {isRU && (
                             <g>
-                              <circle cx={district.cx} cy={district.cy} r="14" fill="none" stroke="#6A1428" strokeWidth="2" className="animate-ping opacity-75" />
+                              <circle cx={district.cx} cy={district.cy} r="14" fill="none" stroke="#ffffff" strokeWidth="2" className="animate-ping opacity-75" />
                               <text
                                 x={district.cx}
                                 y={district.cy - 12}
@@ -537,7 +520,7 @@ export default function ALSAHomepage() {
                   {/* Dynamic Interactive Legend Bar */}
                   <div className="absolute bottom-3 left-3 right-3 bg-stone-900/90 backdrop-blur-md p-3 rounded-xl border border-stone-800 flex flex-wrap items-center justify-between gap-2 text-white text-xs">
                     <div className="flex items-center gap-2">
-                      <div className="w-3.5 h-3.5 rounded bg-[#6A1428] border border-amber-300"></div>
+                      <div className="w-3.5 h-3.5 rounded bg-white border border-white"></div>
                       <span className="font-semibold text-white">เขตบางกะปิ (ที่ตั้งหลัก ม.รามคำแหง)</span>
                     </div>
                     <div className="flex items-center gap-2 text-stone-400 text-[11px]">
@@ -566,13 +549,13 @@ export default function ALSAHomepage() {
                   onClick={() => setSelectedDistrict('bangkapi')}
                   className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                     selectedDistrict === 'bangkapi'
-                      ? 'bg-[#6A1428] text-white ring-1 ring-amber-300/40 shadow'
-                      : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                      ? 'bg-white text-[#510706] ring-1 ring-white/40 shadow'
+                      : 'bg-stone-800 text-white hover:bg-stone-700'
                   }`}
                 >
                   ★ เขตบางกะปิ (ALSA RU Hub)
                 </button>
-                <span className="text-stone-600 text-xs self-center px-1">หรือเลือกเขตอื่นๆ:</span>
+                <span className="text-stone-400 text-xs self-center px-1">หรือเลือกเขตอื่นๆ:</span>
                 {['pathumwan', 'chatuchak', 'watthana', 'dusit'].map((distId) => {
                   const item = BANGKOK_DISTRICTS_50.find(d => d.id === distId);
                   return (
@@ -594,80 +577,80 @@ export default function ALSAHomepage() {
             </div>
 
             {/* Selected District Details & Campus Info Box */}
-            <div className="lg:col-span-4 bg-[#F7F3EB] rounded-3xl p-6 border border-stone-300/80 shadow-sm flex flex-col justify-between min-h-[460px]">
+            <div className="lg:col-span-4 bg-[#350403] rounded-3xl p-6 border border-red-950/60 shadow-sm flex flex-col justify-between min-h-[460px]">
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="px-3 py-1 rounded-full bg-white text-stone-700 text-xs font-medium border border-stone-200">
+                  <span className="px-3 py-1 rounded-full bg-[#510706] text-white text-xs font-medium border border-red-950/60">
                     กรุงเทพมหานคร
                   </span>
                   {currentDistrictData.isRU ? (
-                    <span className="px-3 py-1 rounded-full bg-[#6A1428] text-white text-[11px] font-semibold tracking-wide shadow-sm">
+                    <span className="px-3 py-1 rounded-full bg-white text-[#510706] text-[11px] font-bold tracking-wide shadow-sm">
                       MAIN HQ DISTRICT
                     </span>
                   ) : (
-                    <span className="px-3 py-1 rounded-full bg-stone-300 text-stone-700 text-[11px] font-medium">
+                    <span className="px-3 py-1 rounded-full bg-stone-800 text-white text-[11px] font-medium">
                       เขตทั่วไป (สีเทา)
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-1">
+                <h3 className="text-2xl font-bold text-white mb-1">
                   เขต{currentDistrictData.name} ({currentDistrictData.nameEn})
                 </h3>
                 
                 {currentDistrictData.isRU ? (
-                  <p className="text-xs font-semibold text-[#6A1428] mb-4">
+                  <p className="text-xs font-semibold text-white mb-4">
                     ศูนย์กลางการดำเนินงาน ALSA Ramkhamhaeng University
                   </p>
                 ) : (
-                  <p className="text-xs text-stone-500 mb-4">
+                  <p className="text-xs text-white/60 mb-4">
                     หนึ่งใน 49 เขตปกครองของกรุงเทพมหานคร
                   </p>
                 )}
 
-                <div className="space-y-4 pt-4 border-t border-stone-300/80 text-xs sm:text-sm">
+                <div className="space-y-4 pt-4 border-t border-red-950/40 text-xs sm:text-sm">
                   {currentDistrictData.isRU ? (
                     <>
                       <div>
-                        <span className="font-semibold text-stone-900 block mb-1">📍 สถานที่ตั้งหลัก:</span>
-                        <p className="text-stone-600 leading-relaxed text-xs">
+                        <span className="font-semibold text-white block mb-1">📍 สถานที่ตั้งหลัก:</span>
+                        <p className="text-white/80 leading-relaxed text-xs">
                           คณะนิติศาสตร์ อาคารนิติศาสตร์ ชั้น 1-4 มหาวิทยาลัยรามคำแหง (หัวหมาก) 282 ถนนรามคำแหง แขวงหัวหมาก เขตบางกะปิ กรุงเทพมหานคร 10240
                         </p>
                       </div>
 
                       <div className="space-y-2">
-                        <span className="font-semibold text-stone-900 block">🚌 การเดินทางมายังเขตบางกะปิ (ม.ร.):</span>
+                        <span className="font-semibold text-white block">🚌 การเดินทางมายังเขตบางกะปิ (ม.ร.):</span>
                         
-                        <div className="flex items-start gap-2 bg-white p-2 rounded-xl border border-stone-200">
-                          <Train className="w-3.5 h-3.5 text-[#6A1428] shrink-0 mt-0.5" />
-                          <span className="text-stone-600 text-xs">ARL รามคำแหง / MRT สายสีเหลือง (สถานีแยกลำสาลี / ศรีกรีฑา)</span>
+                        <div className="flex items-start gap-2 bg-[#510706] p-2 rounded-xl border border-red-950/60">
+                          <Train className="w-3.5 h-3.5 text-white shrink-0 mt-0.5" />
+                          <span className="text-white/90 text-xs">ARL รามคำแหง / MRT สายสีเหลือง (สถานีแยกลำสาลี / ศรีกรีฑา)</span>
                         </div>
-                        <div className="flex items-start gap-2 bg-white p-2 rounded-xl border border-stone-200">
-                          <NavigationIcon className="w-3.5 h-3.5 text-[#6A1428] shrink-0 mt-0.5" />
-                          <span className="text-stone-600 text-xs">เรือด่วนคลองแสนแสบ ท่าเรือ ม.รามคำแหง</span>
+                        <div className="flex items-start gap-2 bg-[#510706] p-2 rounded-xl border border-red-950/60">
+                          <Navigation className="w-3.5 h-3.5 text-white shrink-0 mt-0.5" />
+                          <span className="text-white/90 text-xs">เรือด่วนคลองแสนแสบ ท่าเรือ ม.รามคำแหง</span>
                         </div>
-                        <div className="flex items-start gap-2 bg-white p-2 rounded-xl border border-stone-200">
-                          <Bus className="w-3.5 h-3.5 text-[#6A1428] shrink-0 mt-0.5" />
-                          <span className="text-stone-600 text-xs">รถประจำทางสาย 22, 60, 71, 92, 93, 115, 137, 168, 501</span>
+                        <div className="flex items-start gap-2 bg-[#510706] p-2 rounded-xl border border-red-950/60">
+                          <Bus className="w-3.5 h-3.5 text-white shrink-0 mt-0.5" />
+                          <span className="text-white/90 text-xs">รถประจำทางสาย 22, 60, 71, 92, 93, 115, 137, 168, 501</span>
                         </div>
                       </div>
                     </>
                   ) : (
-                    <div className="p-4 bg-stone-200/60 rounded-2xl border border-stone-300 text-stone-700 text-xs leading-relaxed">
-                      📌 เขตนี้แสดงผลเป็นสีเทาตามระบบผังเมือง หากต้องการดูข้อมูลสถานที่ตั้ง ALSA RU กรุณาเลือก <strong className="text-[#6A1428]">เขตบางกะปิ</strong>
+                    <div className="p-4 bg-[#510706] rounded-2xl border border-red-950/60 text-white/80 text-xs leading-relaxed">
+                      📌 เขตนี้แสดงผลเป็นสีเทาตามระบบผังเมือง หากต้องการดูข้อมูลสถานที่ตั้ง ALSA RU กรุณาเลือก <strong className="text-white underline">เขตบางกะปิ</strong>
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-stone-300/80">
+              <div className="mt-6 pt-4 border-t border-red-950/40">
                 <a
                   href="https://maps.google.com/?q=Faculty+of+Law,+Ramkhamhaeng+University"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[#6A1428] hover:bg-[#851b34] text-white text-xs font-medium transition-all shadow-sm"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/30 text-white text-xs font-semibold transition-all shadow-sm"
                 >
-                  <MapPin className="w-4 h-4" />
+                  <MapPin className="w-4 h-4 text-white" />
                   <span>นำทางไปยัง ALSA RU (เขตบางกะปิ)</span>
                 </a>
               </div>
@@ -678,35 +661,34 @@ export default function ALSAHomepage() {
       </section>
 
       {/* 7. MEMBERSHIP TEASER */}
-      {}
       <section id="membership-teaser" className="py-20 px-4 md:px-6 max-w-6xl mx-auto">
-        <div className="bg-[#6A1428] rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-xl">
+        <div className="bg-[#350403] rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-xl border border-red-950/80">
           <div className="relative z-10 max-w-2xl space-y-6">
-            <span className="px-3 py-1 rounded-full bg-white/10 text-amber-200 text-xs font-semibold border border-white/20">
+            <span className="px-3 py-1 rounded-full bg-[#510706] text-white text-xs font-semibold border border-red-950/80">
               JOIN ALSA RU FAMILY
             </span>
-            <h2 className="text-3xl sm:text-5xl font-semibold leading-tight">
+            <h2 className="text-3xl sm:text-5xl font-semibold leading-tight text-white">
               ร่วมเป็นส่วนหนึ่งของ ALSA Ramkhamhaeng
             </h2>
-            <p className="text-stone-200 text-sm sm:text-base leading-relaxed">
+            <p className="text-white/80 text-sm sm:text-base leading-relaxed">
               เปิดรับสมัครนักศึกษานิติศาสตร์ มหาวิทยาลัยรามคำแหง ทุกชั้นปี เข้าร่วมเป็นสมาชิก เพื่อรับสิทธิประโยชน์ในการเข้าร่วมแข่งขัน Moot Court กิจกรรมเสวนาวิชาการ และทุนแลกเปลี่ยนต่างประเทศ
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm pt-2">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-300" />
+                <CheckCircle2 className="w-4 h-4 text-white" />
                 <span>สิทธิเข้าแข่งขัน Moot Court ระดับชาติ</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-300" />
+                <CheckCircle2 className="w-4 h-4 text-white" />
                 <span>โครงการแลกเปลี่ยนต่างประเทศ 17 ประเทศ</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-300" />
+                <CheckCircle2 className="w-4 h-4 text-white" />
                 <span>อบรมภาษาอังกฤษเพื่อกฎหมายฟรี</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-300" />
+                <CheckCircle2 className="w-4 h-4 text-white" />
                 <span>เกียรติบัตรรับรองจาก ALSA International</span>
               </div>
             </div>
@@ -714,9 +696,9 @@ export default function ALSAHomepage() {
             <div className="pt-4">
               <button
                 onClick={() => setRegModalOpen(true)}
-                className="px-6 py-3 rounded-full bg-white hover:bg-stone-100 text-[#6A1428] font-semibold text-sm transition-all shadow-md transform active:scale-95 inline-flex items-center gap-2"
+                className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/40 text-white font-semibold text-sm transition-all shadow-md transform active:scale-95 inline-flex items-center gap-2"
               >
-                <UserPlus className="w-4 h-4" />
+                <UserPlus className="w-4 h-4 text-white" />
                 <span>สมัครสมาชิก ALSA RU ตอนนี้</span>
               </button>
             </div>
@@ -725,30 +707,29 @@ export default function ALSAHomepage() {
       </section>
 
       {/* 8. EXECUTIVE BOARD SECTION */}
-      {}
-      <section id="people-teaser" className="py-20 bg-white border-y border-stone-200 px-4 md:px-6">
+      <section id="people-teaser" className="py-20 bg-[#400504] border-y border-red-950/60 px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs uppercase tracking-widest text-[#6A1428] font-semibold mb-2 block">
+            <span className="text-xs uppercase tracking-widest text-white font-semibold mb-2 block">
               EXECUTIVE BOARD
             </span>
-            <h2 className="text-3xl sm:text-4xl font-semibold text-[#1d1d1f]">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-white">
               คณะกรรมการบริหารองค์กร
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {BOARD_HIGHLIGHTS.map((person, idx) => (
-              <div key={idx} className="bg-[#F7F3EB] p-6 rounded-3xl border border-stone-200/80 flex flex-col items-center text-center">
+              <div key={idx} className="bg-[#350403] p-6 rounded-3xl border border-red-950/60 flex flex-col items-center text-center">
                 <img 
                   src={person.avatar} 
                   alt={person.name} 
-                  className="w-24 h-24 rounded-full object-cover border-2 border-[#6A1428] shadow-md mb-4"
+                  className="w-24 h-24 rounded-full object-cover border-2 border-white shadow-md mb-4"
                 />
-                <h3 className="font-semibold text-base text-[#1d1d1f] mb-1">{person.name}</h3>
-                <span className="text-xs font-semibold text-[#6A1428] mb-1">{person.role}</span>
-                <span className="text-[11px] text-stone-500 mb-4">{person.year}</span>
-                <p className="text-xs text-stone-600 italic leading-relaxed">"{person.quote}"</p>
+                <h3 className="font-semibold text-base text-white mb-1">{person.name}</h3>
+                <span className="text-xs font-semibold text-white mb-1">{person.role}</span>
+                <span className="text-[11px] text-white/70 mb-4">{person.year}</span>
+                <p className="text-xs text-white/90 italic leading-relaxed">"{person.quote}"</p>
               </div>
             ))}
           </div>
@@ -756,11 +737,10 @@ export default function ALSAHomepage() {
       </section>
 
       {/* 9. PARTNER SPONSORS SECTION */}
-      {}
-      <section id="partner-teaser" className="py-16 bg-[#1c1917] text-white px-4 md:px-6">
+      <section id="partner-teaser" className="py-16 bg-[#280302] text-white px-4 md:px-6 border-b border-red-950/60">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs uppercase tracking-widest text-rose-400 font-semibold mb-2 block">
+            <span className="text-xs uppercase tracking-widest text-white font-semibold mb-2 block">
               PARTNERSHIPS
             </span>
             <h2 className="text-2xl sm:text-3xl font-semibold text-white">
@@ -770,11 +750,11 @@ export default function ALSAHomepage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {PARTNER_LOGOS.map((partner, idx) => (
-              <div key={idx} className="bg-stone-800/60 border border-stone-700/60 p-4 rounded-xl flex items-center gap-3">
+              <div key={idx} className="bg-[#350403]/80 border border-red-950/60 p-4 rounded-xl flex items-center gap-3">
                 <div className="text-2xl">{partner.logo}</div>
                 <div>
                   <h4 className="font-medium text-white text-xs leading-snug">{partner.name}</h4>
-                  <span className="text-[10px] text-stone-400">{partner.category}</span>
+                  <span className="text-[10px] text-white/60">{partner.category}</span>
                 </div>
               </div>
             ))}
@@ -783,52 +763,51 @@ export default function ALSAHomepage() {
       </section>
 
       {/* 10. CONTACTS SECTION */}
-      {}
       <section id="contacts-teaser" className="py-20 px-4 md:px-6 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white p-8 sm:p-12 rounded-3xl border border-stone-300/80 shadow-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#350403] p-8 sm:p-12 rounded-3xl border border-red-950/60 shadow-sm">
           <div className="lg:col-span-5 space-y-4">
-            <span className="text-xs uppercase tracking-widest text-[#6A1428] font-semibold block">
+            <span className="text-xs uppercase tracking-widest text-white font-semibold block">
               GET IN TOUCH
             </span>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-[#1d1d1f]">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-white">
               ช่องทางการติดต่อ
             </h2>
-            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+            <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
               หากมีข้อสงสัยเกี่ยวกับกิจกรรม การสมัครสมาชิก หรือการสร้างความร่วมมือทางวิชาการ สามารถติดต่อทีมงาน ALSA RU ได้ผ่านช่องทางด้านล่าง
             </p>
 
-            <div className="space-y-3 pt-4 text-xs sm:text-sm text-stone-700">
+            <div className="space-y-3 pt-4 text-xs sm:text-sm text-white">
               <div className="flex items-center gap-3">
-                <MapPin className="w-4 h-4 text-[#6A1428]" />
+                <MapPin className="w-4 h-4 text-white" />
                 <span>คณะนิติศาสตร์ มหาวิทยาลัยรามคำแหง (หัวหมาก)</span>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-[#6A1428]" />
+                <Mail className="w-4 h-4 text-white" />
                 <span>alsa.ramkhamhaeng@gmail.com</span>
               </div>
               <div className="flex items-center gap-3">
-                <Globe className="w-4 h-4 text-[#6A1428]" />
+                <Globe className="w-4 h-4 text-white" />
                 <span>www.alsathailand.org</span>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-7 bg-[#F7F3EB] p-6 rounded-2xl border border-stone-200">
-            <h3 className="font-semibold text-sm text-[#1d1d1f] mb-4">ส่งข้อความถึงเรา</h3>
+          <div className="lg:col-span-7 bg-[#510706] p-6 rounded-2xl border border-red-950/60">
+            <h3 className="font-semibold text-sm text-white mb-4">ส่งข้อความถึงเรา</h3>
             <form onSubmit={(e) => e.preventDefault()} className="space-y-3 text-xs">
               <div>
-                <label className="block text-stone-700 font-medium mb-1">ชื่อ-นามสกุล</label>
-                <input type="text" placeholder="ระบุชื่อของคุณ" className="w-full px-3 py-2 rounded-xl border border-stone-300 focus:outline-none focus:border-[#6A1428] bg-white" />
+                <label className="block text-white font-medium mb-1">ชื่อ-นามสกุล</label>
+                <input type="text" placeholder="ระบุชื่อของคุณ" className="w-full px-3 py-2 rounded-xl border border-red-950/80 focus:outline-none focus:border-white bg-[#350403] text-white placeholder-white/40" />
               </div>
               <div>
-                <label className="block text-stone-700 font-medium mb-1">อีเมล</label>
-                <input type="email" placeholder="example@email.com" className="w-full px-3 py-2 rounded-xl border border-stone-300 focus:outline-none focus:border-[#6A1428] bg-white" />
+                <label className="block text-white font-medium mb-1">อีเมล</label>
+                <input type="email" placeholder="example@email.com" className="w-full px-3 py-2 rounded-xl border border-red-950/80 focus:outline-none focus:border-white bg-[#350403] text-white placeholder-white/40" />
               </div>
               <div>
-                <label className="block text-stone-700 font-medium mb-1">ข้อความ</label>
-                <textarea rows={3} placeholder="พิมพ์ข้อความของคุณที่นี่..." className="w-full px-3 py-2 rounded-xl border border-stone-300 focus:outline-none focus:border-[#6A1428] bg-white"></textarea>
+                <label className="block text-white font-medium mb-1">ข้อความ</label>
+                <textarea rows={3} placeholder="พิมพ์ข้อความของคุณที่นี่..." className="w-full px-3 py-2 rounded-xl border border-red-950/80 focus:outline-none focus:border-white bg-[#350403] text-white placeholder-white/40"></textarea>
               </div>
-              <button type="submit" className="w-full py-2.5 rounded-full bg-[#6A1428] text-white font-medium hover:bg-[#851b34] transition-colors">
+              <button type="submit" className="w-full py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/40 text-white font-semibold transition-colors">
                 ส่งข้อความ
               </button>
             </form>
@@ -837,62 +816,61 @@ export default function ALSAHomepage() {
       </section>
 
       {/* 11. REGISTRATION MODAL DIALOG */}
-      {}
       {regModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-stone-200 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-[#350403] rounded-3xl p-6 sm:p-8 max-w-md w-full border border-red-950 shadow-2xl relative text-white">
             <button 
               onClick={() => setRegModalOpen(false)}
-              className="absolute top-4 right-4 p-1 rounded-full text-stone-400 hover:text-stone-700"
+              className="absolute top-4 right-4 p-1 rounded-full text-white/60 hover:text-white"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="text-center mb-6">
-              <span className="w-12 h-12 rounded-full bg-rose-100 text-[#6A1428] inline-flex items-center justify-center mb-2">
-                <UserPlus className="w-6 h-6" />
+              <span className="w-12 h-12 rounded-full bg-[#510706] text-white border border-red-950 inline-flex items-center justify-center mb-2">
+                <UserPlus className="w-6 h-6 text-white" />
               </span>
-              <h3 className="text-xl font-bold text-[#1d1d1f]">สมัครสมาชิก ALSA RU</h3>
-              <p className="text-xs text-stone-500 mt-1">สำหรับนักศึกษานิติศาสตร์ มหาวิทยาลัยรามคำแหง</p>
+              <h3 className="text-xl font-bold text-white">สมัครสมาชิก ALSA RU</h3>
+              <p className="text-xs text-white/70 mt-1">สำหรับนักศึกษานิติศาสตร์ มหาวิทยาลัยรามคำแหง</p>
             </div>
 
             {formSubmitted ? (
               <div className="text-center py-8 space-y-3">
-                <Check className="w-12 h-12 text-emerald-600 mx-auto" />
-                <h4 className="font-semibold text-base text-stone-800">ส่งข้อมูลสมัครเรียบร้อยแล้ว!</h4>
-                <p className="text-xs text-stone-500">ทีมงาน ALSA RU จะติดต่อกลับทางอีเมลเพื่อยืนยันสถานะสมาชิก</p>
+                <Check className="w-12 h-12 text-white mx-auto" />
+                <h4 className="font-semibold text-base text-white">ส่งข้อมูลสมัครเรียบร้อยแล้ว!</h4>
+                <p className="text-xs text-white/70">ทีมงาน ALSA RU จะติดต่อกลับทางอีเมลเพื่อยืนยันสถานะสมาชิก</p>
               </div>
             ) : (
               <form onSubmit={handleFormSubmit} className="space-y-3 text-xs">
                 <div>
-                  <label className="block text-stone-700 font-medium mb-1">ชื่อ - นามสกุล *</label>
+                  <label className="block text-white font-medium mb-1">ชื่อ - นามสกุล *</label>
                   <input 
                     required 
                     type="text" 
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
                     placeholder="นาย/นางสาว ..." 
-                    className="w-full px-3 py-2 rounded-xl border border-stone-300 focus:outline-none focus:border-[#6A1428]" 
+                    className="w-full px-3 py-2 rounded-xl border border-red-950 bg-[#510706] text-white placeholder-white/40 focus:outline-none focus:border-white" 
                   />
                 </div>
                 <div>
-                  <label className="block text-stone-700 font-medium mb-1">รหัสนักศึกษา (ม.ร.) *</label>
+                  <label className="block text-white font-medium mb-1">รหัสนักศึกษา (ม.ร.) *</label>
                   <input 
                     required 
                     type="text" 
                     value={formData.studentId}
                     onChange={(e) => setFormData({...formData, studentId: e.target.value})}
                     placeholder="65xxxxxxxx" 
-                    className="w-full px-3 py-2 rounded-xl border border-stone-300 focus:outline-none focus:border-[#6A1428]" 
+                    className="w-full px-3 py-2 rounded-xl border border-red-950 bg-[#510706] text-white placeholder-white/40 focus:outline-none focus:border-white" 
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="block text-stone-700 font-medium mb-1">ชั้นปี *</label>
+                    <label className="block text-white font-medium mb-1">ชั้นปี *</label>
                     <select 
                       value={formData.year}
                       onChange={(e) => setFormData({...formData, year: e.target.value})}
-                      className="w-full px-3 py-2 rounded-xl border border-stone-300 focus:outline-none focus:border-[#6A1428]"
+                      className="w-full px-3 py-2 rounded-xl border border-red-950 bg-[#510706] text-white focus:outline-none focus:border-white"
                     >
                       <option value="1">ปี 1</option>
                       <option value="2">ปี 2</option>
@@ -901,33 +879,33 @@ export default function ALSAHomepage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-stone-700 font-medium mb-1">เบอร์โทรศัพท์ *</label>
+                    <label className="block text-white font-medium mb-1">เบอร์โทรศัพท์ *</label>
                     <input 
                       required 
                       type="tel" 
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
                       placeholder="08x-xxx-xxxx" 
-                      className="w-full px-3 py-2 rounded-xl border border-stone-300 focus:outline-none focus:border-[#6A1428]" 
+                      className="w-full px-3 py-2 rounded-xl border border-red-950 bg-[#510706] text-white placeholder-white/40 focus:outline-none focus:border-white" 
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-stone-700 font-medium mb-1">อีเมลติดต่อ *</label>
+                  <label className="block text-white font-medium mb-1">อีเมลติดต่อ *</label>
                   <input 
                     required 
                     type="email" 
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
                     placeholder="student@rumail.ru.ac.th" 
-                    className="w-full px-3 py-2 rounded-xl border border-stone-300 focus:outline-none focus:border-[#6A1428]" 
+                    className="w-full px-3 py-2 rounded-xl border border-red-950 bg-[#510706] text-white placeholder-white/40 focus:outline-none focus:border-white" 
                   />
                 </div>
 
                 <div className="pt-2">
                   <button 
                     type="submit" 
-                    className="w-full py-3 rounded-full bg-[#6A1428] hover:bg-[#851b34] text-white font-medium text-xs transition-all shadow-md"
+                    className="w-full py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/40 text-white font-semibold text-xs transition-all shadow-md"
                   >
                     ยืนยันการสมัครสมาชิก
                   </button>
@@ -939,45 +917,44 @@ export default function ALSAHomepage() {
       )}
 
       {/* 12. FOOTER */}
-      {}
-      <footer className="bg-[#F7F3EB] text-stone-600 text-xs border-t border-stone-300 py-12 px-4 md:px-6">
+      <footer className="bg-[#280302] text-white/70 text-xs border-t border-red-950/80 py-12 px-4 md:px-6">
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <h4 className="font-semibold text-stone-900 mb-3 text-xs">เกี่ยวกับ ALSA RU</h4>
+              <h4 className="font-semibold text-white mb-3 text-xs">เกี่ยวกับ ALSA RU</h4>
               <ul className="space-y-2 leading-relaxed">
-                <li><a href="#about-teaser" className="hover:underline">ประวัติความเป็นมา</a></li>
-                <li><a href="#people-teaser" className="hover:underline">คณะกรรมการบริหาร</a></li>
-                <li><a href="#about-teaser" className="hover:underline">วิสัยทัศน์องค์กร</a></li>
+                <li><a href="#about-teaser" className="hover:underline hover:text-white">ประวัติความเป็นมา</a></li>
+                <li><a href="#people-teaser" className="hover:underline hover:text-white">คณะกรรมการบริหาร</a></li>
+                <li><a href="#about-teaser" className="hover:underline hover:text-white">วิสัยทัศน์องค์กร</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-stone-900 mb-3 text-xs">วิชาการ & กิจกรรม</h4>
+              <h4 className="font-semibold text-white mb-3 text-xs">วิชาการ & กิจกรรม</h4>
               <ul className="space-y-2 leading-relaxed">
-                <li><a href="#event-teaser" className="hover:underline">Moot Court Competition</a></li>
-                <li><a href="#event-teaser" className="hover:underline">Legal Seminars</a></li>
-                <li><a href="#event-teaser" className="hover:underline">International Study Trip</a></li>
+                <li><a href="#event-teaser" className="hover:underline hover:text-white">Moot Court Competition</a></li>
+                <li><a href="#event-teaser" className="hover:underline hover:text-white">Legal Seminars</a></li>
+                <li><a href="#event-teaser" className="hover:underline hover:text-white">International Study Trip</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-stone-900 mb-3 text-xs">สถานที่ & เขตกรุงเทพฯ</h4>
+              <h4 className="font-semibold text-white mb-3 text-xs">สถานที่ & เขตกรุงเทพฯ</h4>
               <ul className="space-y-2 leading-relaxed">
-                <li><a href="#map-spotlight" className="hover:underline">แผนผังกรุงเทพฯ 50 เขต</a></li>
-                <li><a href="#map-spotlight" className="hover:underline">เขตบางกะปิ (ม.รามคำแหง)</a></li>
-                <li><a href="#partner-teaser" className="hover:underline">องค์กรพันธมิตร</a></li>
+                <li><a href="#map-spotlight" className="hover:underline hover:text-white">แผนผังกรุงเทพฯ 50 เขต</a></li>
+                <li><a href="#map-spotlight" className="hover:underline hover:text-white">เขตบางกะปิ (ม.รามคำแหง)</a></li>
+                <li><a href="#partner-teaser" className="hover:underline hover:text-white">องค์กรพันธมิตร</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-stone-900 mb-3 text-xs">สมาชิกภาพ</h4>
+              <h4 className="font-semibold text-white mb-3 text-xs">สมาชิกภาพ</h4>
               <ul className="space-y-2 leading-relaxed">
-                <li><button onClick={() => setRegModalOpen(true)} className="hover:underline text-[#6A1428] font-medium">สมัครสมาชิกออนไลน์</button></li>
-                <li><a href="#membership-teaser" className="hover:underline">สิทธิประโยชน์สมาชิก</a></li>
-                <li><a href="#contacts-teaser" className="hover:underline">ติดต่อสอบถาม</a></li>
+                <li><button onClick={() => setRegModalOpen(true)} className="hover:underline text-white font-medium">สมัครสมาชิกออนไลน์</button></li>
+                <li><a href="#membership-teaser" className="hover:underline hover:text-white">สิทธิประโยชน์สมาชิก</a></li>
+                <li><a href="#contacts-teaser" className="hover:underline hover:text-white">ติดต่อสอบถาม</a></li>
               </ul>
             </div>
           </div>
 
-          <div className="pt-8 border-t border-stone-300 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-stone-500">
+          <div className="pt-8 border-t border-red-950/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-white/50">
             <div>
               © 2026 Asian Law Students' Association, Ramkhamhaeng University Chapter. All rights reserved.
             </div>
